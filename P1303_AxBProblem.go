@@ -1,3 +1,5 @@
+// high-precision A*B
+
 package main
 
 import (
