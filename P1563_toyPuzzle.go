@@ -1,6 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+)
 
 func main() {
 
@@ -13,25 +19,51 @@ func main() {
 	}
 
 	var temp1 person
-	var list = make([]person, 0)
+	var list = make([]person, n)
 
 	for i := 0; i < n; i++ {
 		fmt.Scanln(&temp1.direction, &temp1.position)
-		list = append(list, temp1)
-	}
-	// fmt.Println(list)
-
-	type solution struct {
-		a int // 0 means left, 1 means right
-		s int // s means difference number
+		list[i] = temp1
 	}
 
-	var temp2 solution
-	var operation = make([]solution, 0)
-	for i := 0; i < m; i++ {
-		fmt.Scanln(&temp2.a, &temp2.s)
-		operation = append(operation, temp2)
-	}
-	// fmt.Println(operation)
+	local := 0
+	var tempA, tempS int
 
+	// cannot use fmt.scanf, will cause TLE
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		split := strings.Split(scanner.Text(), " ")
+		tempA, _ = strconv.Atoi(split[0])
+		tempS, _ = strconv.Atoi(split[1])
+
+		if tempA == 0 {
+			switch list[local].direction {
+			case 0:
+				local = local - tempS
+				if local < 0 {
+					local += n
+				}
+			case 1:
+				local = local + tempS
+				if local >= n {
+					local -= n
+				}
+			}
+		} else if tempA == 1 {
+			switch list[local].direction {
+			case 1:
+				local = local - tempS
+				if local < 0 {
+					local += n
+				}
+			case 0:
+				local = local + tempS
+				if local >= n {
+					local -= n
+				}
+			}
+		}
+	}
+
+	fmt.Println(list[local].position)
 }
