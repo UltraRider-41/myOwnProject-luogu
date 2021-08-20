@@ -20,7 +20,7 @@ func quickPow1(x *big.Int, n int) *big.Int {
 		return big.NewInt(1)
 	} else if n%2 == 1 {
 		temp := quickPow1(x, n-1)
-		temp.Mul(temp, big.NewInt(2))
+		temp.Mul(temp, x)
 		return temp.Mod(temp, modNum)
 	} else if n%2 == 0 {
 		temp := quickPow1(x, n/2)
