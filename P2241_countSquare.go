@@ -17,6 +17,7 @@ func main() {
 	}
 
 	var rectangle, square int
+
 	// count square
 	var squareL, squareW int
 	for r := 1; r <= min; r++ {
