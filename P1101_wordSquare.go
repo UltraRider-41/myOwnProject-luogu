@@ -98,9 +98,11 @@ func checkSlashLeftUp(square [][]string, i int, j int, n int) bool {
 func main() {
 
 	type information struct {
-		row  int
-		col  int
-		kind int // 1 means rowRight, 2 means rowLeft, 3 means colDown, 4 means colUp, 5 means slashRightDown, 6 means slashLeftDown, 7 means slashRightUp, 8 means slashLeftUp
+		row int
+		col int
+		// 1 means rowRight, 2 means rowLeft, 3 means colDown, 4 means colUp,
+		// 5 means slashRightDown, 6 means slashLeftDown, 7 means slashRightUp, 8 means slashLeftUp
+		kind int
 	}
 
 	// 7 <= n <= 100
