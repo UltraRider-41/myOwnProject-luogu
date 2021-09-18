@@ -171,6 +171,7 @@ func main() {
 		}
 	}
 
+	// scheduling plan
 	for i := 0; i < n*m; i++ {
 		if i == 0 {
 			order[i].localStart = 0
